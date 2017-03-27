@@ -14,6 +14,7 @@ const {
     MenuItem
 } = require('electron').remote;
 const HelpExtension = require('helpextension');
+const MapExtension = require('mapextension');
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -61,11 +62,10 @@ gui.extensionsManager = new ExtensionsManager();
 gui.workspace = new Workspace();
 gui.helpExtension = new HelpExtension();
 gui.tasksViewer = new TasksViewer();
+gui.mapExtension = new MapExtension();
 gui.helpExtension.activate();
 gui.tasksViewer.activate();
-
-
-
+gui.mapExtension.activate();
 gui.stopWaiting();
 gui.viewTrick();
 gui.notify(`App loaded in ${(new Date())-t} ms`);
