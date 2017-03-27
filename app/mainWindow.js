@@ -70,4 +70,4 @@ gui.stopWaiting();
 gui.viewTrick();
 gui.notify(`App loaded in ${(new Date())-t} ms`);
 
-//module.exports = gui;
+module.exports = gui;
