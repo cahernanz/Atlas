@@ -40,23 +40,43 @@ if (isDev) {
 gui.addMenuItem(new MenuItem({
     label: "File",
     type: "submenu",
-    submenu: Menu.buildFromTemplate([
-      {
-        label: 'New Workspace'
-      },
-      {
-       label: 'Open Workspace'
-      },
-      {
-        label: 'Save Workspace'
-      },
-      {
-        label: 'Save Workspace as'
-      },
-      {
-        label: 'Quit',
-        role: 'quit'
-    }])
+    submenu: Menu.buildFromTemplate([{
+            label: 'New Workspace',
+            click: () => {
+                if (gui.workspace instanceof Workspace) {
+                    gui.workspace.newChecking();
+                }
+            }
+        },
+        {
+            label: 'Open Workspace',
+            click: () => {
+                if (gui.workspace instanceof Workspace) {
+                    gui.workspace.loadChecking();
+                }
+            }
+        },
+        {
+            label: 'Save Workspace',
+            click: () => {
+                if (gui.workspace instanceof Workspace) {
+                    gui.workspace.save(this.spaces.workspace.path);
+                }
+            }
+        },
+        {
+            label: 'Save Workspace as',
+            click: () => {
+                if (gui.workspace instanceof Workspace) {
+                    gui.workspace.save();
+                }
+            }
+        },
+        {
+            label: 'Quit',
+            role: 'quit'
+        }
+    ])
 }));
 gui.extensionsManager = new ExtensionsManager();
 gui.workspace = new Workspace();
@@ -66,6 +86,7 @@ gui.mapExtension = new MapExtension();
 gui.helpExtension.activate();
 gui.tasksViewer.activate();
 gui.mapExtension.activate();
+gui.mapExtension.show();
 gui.stopWaiting();
 gui.viewTrick();
 gui.notify(`App loaded in ${(new Date())-t} ms`);
