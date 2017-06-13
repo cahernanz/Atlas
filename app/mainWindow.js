@@ -15,6 +15,9 @@ const {
 } = require('electron').remote;
 const HelpExtension = require('helpextension');
 const MapExtension = require('mapextension');
+const ImageJ = require('imagejextension');
+const GM = require('graphicsmagickextension');
+const Shiny = require('rshinyextension');
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -83,12 +86,14 @@ gui.workspace = new Workspace();
 gui.helpExtension = new HelpExtension();
 gui.tasksViewer = new TasksViewer();
 gui.mapExtension = new MapExtension();
+new Shiny();
+new GM();
 gui.helpExtension.activate();
 gui.tasksViewer.activate();
 gui.mapExtension.activate();
 gui.mapExtension.show();
+new ImageJ().activate();
 gui.stopWaiting();
 gui.viewTrick();
 gui.notify(`App loaded in ${(new Date())-t} ms`);
-
 module.exports = gui;

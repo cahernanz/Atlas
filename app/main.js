@@ -66,44 +66,6 @@ app.commandLine.appendSwitch("disable-renderer-backgrounding");
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
 
-// app.on('ready', () => {
-//     tray = new Tray(trayimg)
-//     const contextMenu = Menu.buildFromTemplate([{
-//             label: 'Show',
-//             type: 'normal',
-//             click: () => {
-//               win.show()
-//             }
-//         },
-//         {
-//             label: 'Minimize',
-//             type: 'normal',
-//             click: ()=>{
-//               win.hide();
-//             }
-//         },
-//         {
-//             label: 'Quit',
-//             type: 'normal',
-//             click: ()=>{
-//               dialog.showMessageBox({
-//                 type: 'question',
-//                 buttons: ['No', 'Yes'],
-//                 title: 'Atlas',
-//                 message: 'Do you really want to quit?',
-//                 detail: 'all unsaved data will be lost',
-//                 noLink: true
-//               },(id)=>{
-//                 if (id>0){
-//                   app.quit();
-//                 }
-//               })
-//             }
-//         }
-//     ])
-//     tray.setToolTip('Atlas')
-//     tray.setContextMenu(contextMenu)
-// })
 
 
 //Quit when all windows are closed.
@@ -130,8 +92,6 @@ ipcMain.on("focusWindow", () => {
 ipcMain.on("openDevTools", () => {
     win.webContents.openDevTools()
 })
-
-
 
 ipcMain.on("imageJ", (event, arg) => {
     let path = app.getPath('exe');
