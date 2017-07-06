@@ -1,7 +1,7 @@
 # Atlas
 
 ## Warning
-We are currently working towards the new version and framweork for Atlas application. The API will be totally redesigned with a more modular (see https://github.com/gherardovarando/Atlas/tree/modular for ongoing progress)
+We are currently working towards the new version and framweork for Atlas application. The API will be totally redesigned with a more modular approach (see https://github.com/gherardovarando/Atlas/tree/modular for ongoing progress)
 
 ### Authors
  - Gherardo Varando <gherardo.varando@gmail.com>
