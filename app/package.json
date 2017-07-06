@@ -33,8 +33,14 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
+    "tiff-to-png":"",
     "electrongui": "github:gherardovarando/electrongui",
     "helpextension": "github:gherardovarando/HelpExtension",
-    "mapextension": "github:gherardovarando/mapextension"
+    "mapextension": "github:gherardovarando/mapextension",
+    "imagejextension":"github:mjuez/ImageJExtension",
+    "rshinyextension":"github:mjuez/RShinyExtension",
+    "graphicsmagickextension":"github:mjuez/GraphicsMagickExtension",
+    "leaflet-map-builder": "github:gherardovarando/leaflet-map-builder",
+    "leaflet-csvtiles":"github:gherardovarando/leaflet-csvtiles"
   }
 }

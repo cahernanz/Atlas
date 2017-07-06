@@ -8,13 +8,11 @@
 
 - install Node and npm
 - Clone the repository
+- navigate in the top folder of the repository
 - run `npm install`
 - run `npm run start` for starting the application
 - run `npm run dist` to build and create the installable
-- add a `.gitignore` file to avoid git to add the `node_modules` and `app/node_modules`, `app/src/node_modules` should instead be excluded from the gitignore, e.g.
-  - `.gitignore`:
-                 node_modules
-        !/app/src/node_modules
+
 
 ### Founding
  This application is been developed by the Computational Intelligence Group (UPM) with the help of the Laboratorio Cajal de Circuitos Corticales (UPM/CSIC) with the economic support of the Spanish Ministerio de Economía y Competitividad through the Cajal Blue Brain Project( Spanish partner of the Blue Brain Project initiative from EPFL) and of the European Union through the Human Brain Project.
