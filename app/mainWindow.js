@@ -63,7 +63,7 @@ gui.addMenuItem(new MenuItem({
             label: 'Save Workspace',
             click: () => {
                 if (gui.workspace instanceof Workspace) {
-                    gui.workspace.save(this.spaces.workspace.path);
+                    gui.workspace.save(gui.workspace.spaces.workspace.path);
                 }
             }
         },
@@ -81,6 +81,7 @@ gui.addMenuItem(new MenuItem({
         }
     ])
 }));
+
 gui.extensionsManager = new ExtensionsManager();
 gui.workspace = new Workspace();
 gui.helpExtension = new HelpExtension();
