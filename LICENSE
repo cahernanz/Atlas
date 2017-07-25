@@ -1,25 +1,3 @@
-# Atlas
-
-### Authors
- - Gherardo Varando <gherardo.varando@gmail.com>
- - Mario Juez <mario@mjuez.com>
-
-### How to
-
-- install Node and npm
-- Clone the repository
-- navigate in the top folder of the repository
-- run `npm install`
-- run `npm run start` for starting the application
-- run `npm run dist` to build and create the installable
-
-
-### Founding
- This application is been developed by the Computational Intelligence Group (UPM) with the help of the Laboratorio Cajal de Circuitos Corticales (UPM/CSIC) with the economic support of the Spanish Ministerio de Economía y Competitividad through the Cajal Blue Brain Project( Spanish partner of the Blue Brain Project initiative from EPFL) and of the European Union through the Human Brain Project.
-
-
-### License
-
 Copyright (c) 2016 Gherardo Varando
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
