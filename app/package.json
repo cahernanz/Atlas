@@ -27,7 +27,7 @@
     "neuroscience",
     "spatial data"
   ],
-  "license": "MIT",
+  "license": "GPL-3",
   "devDependencies": {
     "electron": "^1.4.10"
   },
