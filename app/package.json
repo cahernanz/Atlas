@@ -40,6 +40,7 @@
     "rshinyextension":"github:mjuez/RShinyExtension",
     "graphicsmagickextension":"github:gherardovarando/GraphicsMagickExtension",
     "leaflet-map-builder": "github:gherardovarando/leaflet-map-builder",
-    "leaflet-csvtiles":"github:gherardovarando/leaflet-csvtiles"
+    "leaflet-csvtiles":"github:gherardovarando/leaflet-csvtiles",
+    "leaflet-multislice":"github:gherardovarando/leaflet-multislice"
   }
 }
