@@ -37,10 +37,10 @@
     "helpextension": "github:gherardovarando/HelpExtension",
     "mapextension": "github:gherardovarando/mapextension",
     "imagejextension":"github:gherardovarando/ImageJExtension",
-    "rshinyextension":"github:mjuez/RShinyExtension",
+    "rshinyextension":"github:gherardovarando/RShinyExtension",
     "graphicsmagickextension":"github:gherardovarando/GraphicsMagickExtension",
     "leaflet-map-builder": "github:gherardovarando/leaflet-map-builder",
     "leaflet-csvtiles":"github:gherardovarando/leaflet-csvtiles",
-    "leaflet-multislice":"github:gherardovarando/leaflet-multislice"
+    "leaflet-multilevel":"github:gherardovarando/leaflet-multilevel"
   }
 }
