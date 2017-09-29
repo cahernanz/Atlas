@@ -38,9 +38,6 @@
     "mapextension": "github:gherardovarando/mapextension",
     "imagejextension":"github:gherardovarando/ImageJExtension",
     "rshinyextension":"github:gherardovarando/RShinyExtension",
-    "graphicsmagickextension":"github:gherardovarando/GraphicsMagickExtension",
-    "leaflet-map-builder": "github:gherardovarando/leaflet-map-builder",
-    "leaflet-csvtiles":"github:gherardovarando/leaflet-csvtiles",
-    "leaflet-multilevel":"github:gherardovarando/leaflet-multilevel"
+    "graphicsmagickextension":"github:gherardovarando/GraphicsMagickExtension"
   }
 }
