@@ -34,10 +34,11 @@
   "dependencies": {
     "electron-is-dev": "^0.1.2",
     "electrongui": "github:gherardovarando/electrongui",
+    "graphicsmagickextension": "github:gherardovarando/GraphicsMagickExtension",
     "helpextension": "github:gherardovarando/HelpExtension",
+    "imagejextension": "github:gherardovarando/ImageJExtension",
+    "leaflet": "^1.2.0",
     "mapextension": "github:gherardovarando/mapextension",
-    "imagejextension":"github:gherardovarando/ImageJExtension",
-    "rshinyextension":"github:gherardovarando/RShinyExtension",
-    "graphicsmagickextension":"github:gherardovarando/GraphicsMagickExtension"
+    "rshinyextension": "github:gherardovarando/RShinyExtension"
   }
 }
