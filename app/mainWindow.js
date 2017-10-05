@@ -28,11 +28,11 @@ const {
   Menu,
   MenuItem
 } = require('electron').remote;
-const HelpExtension = require('helpextension');
+//const HelpExtension = require('helpextension');
 const MapExtension = require('mapextension');
-const ImageJ = require('imagejextension');
-const GM = require('graphicsmagickextension');
-const Shiny = require('rshinyextension');
+//const ImageJ = require('imagejextension');
+//const GM = require('graphicsmagickextension');
+//const Shiny = require('rshinyextension');
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -100,16 +100,16 @@ gui.addMenuItem(new MenuItem({
 
 gui.extensionsManager = new ExtensionsManager();
 gui.workspace = new Workspace();
-gui.helpExtension = new HelpExtension();
+//gui.helpExtension = new HelpExtension();
 gui.tasksViewer = new TasksViewer();
 gui.mapExtension = new MapExtension();
-new ImageJ();
-new Shiny();
-new GM();
-gui.helpExtension.activate();
+//new ImageJ();
+//new Shiny();
+//new GM();
+//gui.helpExtension.activate();
 gui.tasksViewer.activate();
 gui.mapExtension.activate();
-gui.extensions.ImageJExtension.activate();
+//gui.extensions.ImageJExtension.activate();
 gui.mapExtension.show();
 gui.stopWaiting();
 gui.viewTrick();
