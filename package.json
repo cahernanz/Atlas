@@ -11,15 +11,7 @@
   },
   "build": {
     "appId": "atlas.gherardovarando",
-    "extraResources": [
-      {
-        "from": "app/src/extensions/imagejPage/_resources/ImageJ",
-        "to": "ImageJ",
-        "filter": [
-          "**/*"
-        ]
-      }
-    ],
+    "extraResources": [],
     "mac": {
       "category": "your.app.category.type"
     },
@@ -43,9 +35,5 @@
       "iconUrl": "http://vps136.cesvima.upm.es/assets/atlas/icon.ico",
       "publisherName": "Computational Intelligence Group"
     }
-  },
-  "dependencies": {
-    "dateformat": "^2.0.0",
-    "gm": "^1.23.0"
   }
 }

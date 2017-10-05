@@ -1,3 +1,18 @@
+// Copyright (C) 2016  Gherardo Varando (gherardo.varando@gmail.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 const {
     fork,
     exec
@@ -18,10 +33,8 @@ const {
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-let minHeight = 65;
 let trayimg = `${__dirname}/icon.png`
 if (process.platform === 'win32') {
-    minHeight = 100;
     trayimg = `${__dirname}/icon.ico`
 }
 
@@ -36,8 +49,8 @@ function createWindow() {
     }
     // Create the browser window.
     win = new BrowserWindow({
-        width: 900,
-        height: minHeight,
+        width: 800,
+        height: 600,
         frame: frame,
         titleBarStyle: 'hidden',
         icon: `${__dirname}/icon.png`
@@ -68,44 +81,6 @@ app.commandLine.appendSwitch("disable-renderer-backgrounding");
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
 
-// app.on('ready', () => {
-//     tray = new Tray(trayimg)
-//     const contextMenu = Menu.buildFromTemplate([{
-//             label: 'Show',
-//             type: 'normal',
-//             click: () => {
-//               win.show()
-//             }
-//         },
-//         {
-//             label: 'Minimize',
-//             type: 'normal',
-//             click: ()=>{
-//               win.hide();
-//             }
-//         },
-//         {
-//             label: 'Quit',
-//             type: 'normal',
-//             click: ()=>{
-//               dialog.showMessageBox({
-//                 type: 'question',
-//                 buttons: ['No', 'Yes'],
-//                 title: 'Atlas',
-//                 message: 'Do you really want to quit?',
-//                 detail: 'all unsaved data will be lost',
-//                 noLink: true
-//               },(id)=>{
-//                 if (id>0){
-//                   app.quit();
-//                 }
-//               })
-//             }
-//         }
-//     ])
-//     tray.setToolTip('Atlas')
-//     tray.setContextMenu(contextMenu)
-// })
 
 
 //Quit when all windows are closed.
@@ -131,15 +106,6 @@ ipcMain.on("focusWindow", () => {
 
 ipcMain.on("openDevTools", () => {
     win.webContents.openDevTools()
-})
-
-
-
-ipcMain.on("imageJ", (event, arg) => {
-    let path = app.getPath('exe');
-    exec('java -Xmx512m -jar ij.jar', {
-        cwd: `${process.resourcesPath}/ImageJ/`
-    }, (error, stdout, stderr) => {})
 })
 
 ipcMain.on('setProgress', (event, arg) => {

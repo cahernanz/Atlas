@@ -3,113 +3,58 @@
 
 <head>
 
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <title>Atlas v0.1.4</title>
+  <title>Atlas</title>
 
-    <script>
-        if (typeof module === 'object') {
-            window.module = module;
-            module = undefined;
-        }
-    </script>
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
 
-
-    <!-- font awesome icons-->
-    <link type="text/css" rel="stylesheet" href="style/font-awesome-4.5.0/css/font-awesome.min.css">
-
-
-    <link rel="stylesheet" href="style/photon.min.css">
-
-
-    <link type="text/css" rel="stylesheet" href="style/gui.css">
-
-    <!-- Leaflet -->
-    <link type="text/css" rel="stylesheet" href="style/leaflet.css">
-
-    <!-- Leaflet.Draw  (is min) -->
-    <link type="text/css" rel="stylesheet" href="style/leaflet.draw.css">
-
-    <!-- marker cluster -->
-    <link type="text/css" rel="stylesheet" href="style/MarkerCluster.Default.css">
-
-    <!-- github markdown css -->
-    <link rel="stylesheet" href="style/github-markdown.css">
+  <!-- jsoneditor -->
+  <link href="style/jsoneditor.min.css" rel="stylesheet" type="text/css">
+  <link href="style/jsoneditor-custom.css" rel="stylesheet" type="text/css">
+  <!-- font awesome icons-->
+  <link type="text/css" rel="stylesheet" href="style/font-awesome-4.5.0/css/font-awesome.min.css">
 
 
-    <script>
-        if (window.module) module = window.module;
-    </script>
+  <link rel="stylesheet" href="style/photon.min.css">
+
+  <link type="text/css" rel="stylesheet" href="style/gui.css">
+
+  <!-- Leaflet -->
+  <link type="text/css" rel="stylesheet" href="style/leaflet.css">
+
+  <!-- Leaflet.Draw  (is min) -->
+  <link type="text/css" rel="stylesheet" href="style/leaflet.draw.css">
+
+  <!-- marker cluster -->
+  <link type="text/css" rel="stylesheet" href="style/MarkerCluster.Default.css">
+
+  <!-- github markdown css -->
+  <link rel="stylesheet" href="style/github-markdown.css">
+
+
+  <script>
+    if (window.module) module = window.module;
+  </script>
 
 
 </head>
 
 <body>
 
-    <div class="window app">
-        <header class="toolbar toolbar-header" id="header">
-            <div class="toolbar-actions">
-            </div>
-        </header>
-
-        <div class="window-content">
-            <!-- <div class="pane-group main" id="main">
-                <div class='pane padded'>
-                    <h1> Atlas v0.1.3 <img src='images/icon.png' height="30" width="30"></img></h1>
-
-                    <p> <img src='images/cig.png'></img>
-                        <img src='images/cbbp.png'></img>
-                        <img src='images/hbp.png'></img>
-                        <img src='images/upm.png'></img>
-                    </p>
-
-                </div>
-            </div> -->
 
 
-
-        </div>
-        <footer class="toolbar toolbar-footer" id="footer">
-
-        </footer>
-    </div>
 
 </body>
 
 
 <script>
-    let t = new Date();
-    //prevent app closing
-    document.addEventListener('dragover', function(event) {
-        event.preventDefault();
-        return false;
-    }, false);
-
-    document.addEventListener('drop', function(event) {
-        event.preventDefault();
-        return false;
-    }, false);
-
-    let gui = require(`./src/node_modules/Gui`);
-    gui.startWaiting();
-    gui.bindExtensionManager();
-    gui.bindWorkspace();
-    gui.menu();
-    gui.extensionsManager.loadAllExtensions();
-
-    gui.extensionsManager.on('load:all', () => {
-        gui.extensionsManager.extensions.mapPage.activate();
-        gui.extensionsManager.extensions.regionStatsPage.activate();
-        gui.extensionsManager.extensions.tasksPage.activate();
-        gui.extensionsManager.extensions.helpPage.activate();
-        gui.extensionsManager.extensions.imagej.activate();
-        gui.stopWaiting();
-        gui.setProgress(0);
-        gui.extensionsManager.extensions.mapPage.show();
-        gui.viewTrick();
-        gui.notify(`App loaded in ${(new Date())-t} ms`);
-    })
-
+  let gui = require('./mainWindow.js');
 </script>
 
 

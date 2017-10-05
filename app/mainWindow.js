@@ -1,0 +1,117 @@
+// Copyright (C) 2016  Gherardo Varando (gherardo.varando@gmail.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+'use strict';
+
+let t = new Date();
+
+const isDev = require('electron-is-dev');
+const {
+  gui,
+  Workspace,
+  ExtensionsManager,
+  TasksViewer
+} = require(`electrongui`);
+const {
+  Menu,
+  MenuItem
+} = require('electron').remote;
+//const HelpExtension = require('helpextension');
+const MapExtension = require('mapextension');
+//const ImageJ = require('imagejextension');
+//const GM = require('graphicsmagickextension');
+//const Shiny = require('rshinyextension');
+
+//prevent app closing
+document.addEventListener('dragover', function(event) {
+  event.preventDefault();
+  return false;
+}, false);
+
+document.addEventListener('drop', function(event) {
+  event.preventDefault();
+  return false;
+}, false);
+gui.startWaiting();
+gui.win.setMaximizable(false); //work just in win and mac
+if (isDev) {
+  gui.addMenuItem(new MenuItem({
+    label: "Dev",
+    type: 'submenu',
+    submenu: Menu.buildFromTemplate([{
+      label: 'toggledevtools',
+      role: "toggledevtools"
+    }])
+  }));
+}
+gui.addMenuItem(new MenuItem({
+  label: "File",
+  type: "submenu",
+  submenu: Menu.buildFromTemplate([{
+      label: 'New Workspace',
+      click: () => {
+        if (gui.workspace instanceof Workspace) {
+          gui.workspace.newChecking();
+        }
+      }
+    },
+    {
+      label: 'Open Workspace',
+      click: () => {
+        if (gui.workspace instanceof Workspace) {
+          gui.workspace.loadChecking();
+        }
+      }
+    },
+    {
+      label: 'Save Workspace',
+      click: () => {
+        if (gui.workspace instanceof Workspace) {
+          gui.workspace.save(gui.workspace.spaces.workspace.path);
+        }
+      }
+    },
+    {
+      label: 'Save Workspace as',
+      click: () => {
+        if (gui.workspace instanceof Workspace) {
+          gui.workspace.save();
+        }
+      }
+    },
+    {
+      label: 'Quit',
+      role: 'quit'
+    }
+  ])
+}));
+
+gui.extensionsManager = new ExtensionsManager();
+gui.workspace = new Workspace();
+//gui.helpExtension = new HelpExtension();
+gui.tasksViewer = new TasksViewer();
+gui.mapExtension = new MapExtension();
+//new ImageJ();
+//new Shiny();
+//new GM();
+//gui.helpExtension.activate();
+gui.tasksViewer.activate();
+gui.mapExtension.activate();
+//gui.extensions.ImageJExtension.activate();
+gui.mapExtension.show();
+gui.stopWaiting();
+gui.viewTrick();
+gui.notify(`App loaded in ${(new Date())-t} ms`);
+module.exports = gui;
