@@ -45,6 +45,7 @@ document.addEventListener('drop', function(event) {
   return false;
 }, false);
 gui.startWaiting();
+gui.win.setMaximizable(false); //work just in win and mac
 if (isDev) {
   gui.addMenuItem(new MenuItem({
     label: "Dev",

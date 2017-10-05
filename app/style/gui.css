@@ -575,6 +575,16 @@ img.imageicon {
   padding: 0;
 }
 
+.color-picker {
+  display: inline-block;
+  font-size: 0;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+
 .list-group-item .main .left i {
   margin-right: 10px;
 }
@@ -744,5 +754,5 @@ img.imageicon {
 }
 
 td {
-  overflow: inherit; 
+  overflow: inherit;
 }
