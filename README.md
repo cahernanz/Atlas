@@ -1,10 +1,12 @@
 # Atlas
+## v1.0.0
 
 ## Warning
-We are currently working towards the new version and framweork for Atlas application. The API will be totally redesigned with a more modular approach (see https://github.com/gherardovarando/Atlas/tree/modular for ongoing progress)
+New version! incompatibel with older versions and older map configurations.
 
 ### Authors
  - Gherardo Varando <gherardo.varando@gmail.com>
+
 
 ### How to
 
