@@ -19,10 +19,10 @@ let t = new Date();
 
 const isDev = require('electron-is-dev');
 const {
-  gui,
   Workspace,
   ExtensionsManager,
-  TasksViewer
+  TasksViewer,
+  Gui
 } = require(`electrongui`);
 const {
   Menu,
@@ -30,9 +30,12 @@ const {
 } = require('electron').remote;
 //const HelpExtension = require('helpextension');
 const MapExtension = require('mapextension');
-//const ImageJ = require('imagejextension');
+const ImageJ = require('imagejextension');
 //const GM = require('graphicsmagickextension');
 //const Shiny = require('rshinyextension');
+
+let gui = new Gui();
+
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -98,18 +101,17 @@ gui.addMenuItem(new MenuItem({
   ])
 }));
 
-gui.extensionsManager = new ExtensionsManager();
-gui.workspace = new Workspace();
+gui.extensionsManager = new ExtensionsManager(gui);
+gui.workspace = new Workspace(gui);
 //gui.helpExtension = new HelpExtension();
-gui.tasksViewer = new TasksViewer();
-gui.mapExtension = new MapExtension();
-//new ImageJ();
+gui.tasksViewer = new TasksViewer(gui);
+gui.mapExtension = new MapExtension(gui);
 //new Shiny();
 //new GM();
 //gui.helpExtension.activate();
 gui.tasksViewer.activate();
 gui.mapExtension.activate();
-//gui.extensions.ImageJExtension.activate();
+(new ImageJ(gui)).activate();
 gui.mapExtension.show();
 gui.stopWaiting();
 gui.viewTrick();
