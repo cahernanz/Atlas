@@ -27,17 +27,14 @@
     "neuroscience",
     "spatial data"
   ],
-  "license": "GPL-3",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.10"
+    "electron": "^1.8.1"
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
     "electrongui": "",
-    "graphicsmagickextension": "github:gherardovarando/GraphicsMagickExtension",
-    "helpextension": "github:gherardovarando/HelpExtension",
     "imagejextension": "github:gherardovarando/ImageJExtension",
-    "mapextension": "",
-    "rshinyextension": "github:gherardovarando/RShinyExtension"
+    "mapextension": ""
   }
 }
