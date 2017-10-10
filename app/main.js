@@ -38,7 +38,7 @@ if (process.platform === 'win32') {
     trayimg = `${__dirname}/icon.ico`
 }
 
-console.log(process.versions)
+console.log(process.argv)
 
 
 function createWindow() {
