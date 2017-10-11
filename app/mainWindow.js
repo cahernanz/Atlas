@@ -27,8 +27,12 @@ const {
 } = require(`electrongui`)
 const {
   Menu,
-  MenuItem
+  MenuItem,
+  app
 } = require('electron').remote
+const {
+  ipcRenderer
+} = require('electron')
 //const HelpExtension = require('helpextension')
 const MapExtension = require('mapextension')
 const ImageJExtension = require('imagejextension')
@@ -36,6 +40,10 @@ const ImageJExtension = require('imagejextension')
 //const Shiny = require('rshinyextension')
 
 let gui = new Gui()
+
+ipcRenderer.on('clean', () => {
+  if (gui && gui.workspace) gui.workspace.newChecking()
+})
 
 let mainProc = require('electron').remote.require('process')
 let isCleanW = mainProc.argv.includes('--clean')
@@ -105,7 +113,7 @@ gui.addMenuItem(new MenuItem({
 }))
 
 gui.extensionsManager = new ExtensionsManager(gui)
-gui.workspace = new Workspace(gui,{
+gui.workspace = new Workspace(gui, {
   clean: isCleanW
 })
 //gui.helpExtension = new HelpExtension()

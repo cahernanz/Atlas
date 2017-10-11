@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "start": "electron ./app --enable-logging",
-    "startclean" : "electron ./app --enable-logging --clean",
+    "startclean": "electron ./app --enable-logging --clean",
     "dev": "NODE_ENV='development' npm run start",
     "dist": "build  -lw"
   },
@@ -27,7 +27,7 @@
     },
     "linux": {
       "category": "Science",
-      "desktop":{
+      "desktop": {
         "Actions": "OpenClean",
         "category": "science\n[Desktop Action OpenClean]\nName=Clean workspace\nExec=/opt/Atlas/atlas --clean"
       },
@@ -41,10 +41,10 @@
     "win": {
       "icon": "build/icon.ico",
       "target": {
-         "target": "nsis",
-         "arch": [
-           "x64"
-         ]
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
       }
     },
     "nsis": {

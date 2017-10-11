@@ -38,8 +38,14 @@ if (process.platform === 'win32') {
   trayimg = `${__dirname}/icon.ico`
 }
 
-console.log(process.argv)
+const isSecond = app.makeSingleInstance((argv, workingdir)=>{
+  if (argv.includes('--clean'))
+  if (win) win.show()
+})
 
+if (isSecond) {
+  app.quit()
+}
 
 
 function createWindow() {
