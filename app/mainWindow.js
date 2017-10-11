@@ -52,7 +52,7 @@ document.addEventListener('drop', function(event) {
 }, false)
 gui.startWaiting()
 gui.win.setMaximizable(false) //work just in win and mac
-if (isDev) {
+if (isDev || true) {
   gui.addMenuItem(new MenuItem({
     label: "Dev",
     type: 'submenu',

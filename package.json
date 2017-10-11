@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "electron-builder": "^19.35.1",
-    "electron": "^1.8.1"
+    "electron": "^1.7.8"
   },
   "scripts": {
     "postinstall": "install-app-deps",
@@ -27,6 +27,10 @@
     },
     "linux": {
       "category": "Science",
+      "desktop":{
+        "Actions": "OpenClean",
+        "category": "science\n[Desktop Action OpenClean]\nName=Clean workspace\nExec=/opt/Atlas/atlas --clean"
+      },
       "target": {
         "target": "deb",
         "arch": [
