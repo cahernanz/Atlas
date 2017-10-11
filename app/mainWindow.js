@@ -22,7 +22,8 @@ const {
   Workspace,
   ExtensionsManager,
   TasksViewer,
-  Gui
+  Gui,
+  util
 } = require(`electrongui`)
 const {
   Menu,
@@ -30,14 +31,14 @@ const {
 } = require('electron').remote
 //const HelpExtension = require('helpextension')
 const MapExtension = require('mapextension')
-//const ImageJ = require('imagejextension')
+const ImageJExtension = require('imagejextension')
 //const GM = require('graphicsmagickextension')
 //const Shiny = require('rshinyextension')
 
 let gui = new Gui()
-let argv = process.argv
-let isCleanW = process.argv.includes('--clean')
 
+let mainProc = require('electron').remote.require('process')
+let isCleanW = mainProc.argv.includes('--clean')
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -109,14 +110,13 @@ gui.workspace = new Workspace(gui,{
 })
 //gui.helpExtension = new HelpExtension()
 gui.tasksViewer = new TasksViewer(gui)
-gui.mapExtension = new MapExtension(gui)
-//new Shiny()
-//new GM()
+new MapExtension(gui)
 //gui.helpExtension.activate()
 gui.tasksViewer.activate()
-gui.mapExtension.activate()
-//(new ImageJ(gui)).activate()
-gui.mapExtension.show()
+gui.extensions.MapExtension.activate()
+gui.extensions.MapExtension.show()
+new ImageJExtension(gui)
+gui.extensions.ImageJExtension.activate()
 gui.stopWaiting()
 gui.viewTrick()
 gui.notify(`App loaded in ${(new Date())-t} ms`)

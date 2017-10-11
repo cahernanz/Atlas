@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
-    "electrongui": "",
-    "imagejextension": "github:gherardovarando/ImageJExtension",
-    "mapextension": ""
+    "electrongui": "^0.1.4",
+    "imagejextension": "^0.0.2",
+    "mapextension": "^0.0.7"
   }
 }
