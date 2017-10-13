@@ -7,6 +7,21 @@
   }
 }
 
+label {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.block {
+  display: inline-block;
+}
+
+input[type=checkbox] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
+}
+
 .app {
   /* Disable text selection, or your app will feel like a web page */
   -webkit-user-select: none;
@@ -27,17 +42,8 @@
   width: 20%;
 }
 
-.padded {
-  padding: 20px;
-}
-
 .sidebar.scrollable {
   overflow-y: auto;
-}
-
-input.inputFooter {
-  -webkit-app-region: no-drag;
-  padding: 3px;
 }
 
 div.cellconteiner {
@@ -49,18 +55,36 @@ div.cellconteiner {
   justify-content: space-around;
 }
 
+div.cell-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: left;
+  flex-direction: row;
+  align-content: left;
+  justify-content: space-around;
+}
+
 .cell {
-  margin: 2px;
+  margin: 4px;
 }
 
-.active.check-button {
-  background-color: #4fa8df;
+button.check-button {
+  padding-left: 25px;
+  margin-right: 0;
+  background-image: linear-gradient(to right, transparent 1px, #c0cfd8 1px, #c0cfd8 23px, transparent 23px, transparent);
+  background-color: inherit;
+  color: inherit;
+  font-weight: bold;
 }
 
-.check-button:hover {
-  border-color: #0f7abc;
-  border-width: thin;
-  background-color: #97bfd8;
+button.active.check-button {
+  background-image: linear-gradient(to right, transparent 1px, #116cd6 1px, #116cd6 23px, transparent 23px, transparent);
+  background-color: inherit;
+  color: inherit;
+}
+
+button.check-button:hover {
+  background-image: linear-gradient(to right, transparent 1px, #81b3d3 1px, #81b3d3 23px, transparent 23px, transparent);
 }
 
 .progress-bar {
@@ -241,20 +265,10 @@ input.list-input[readOnly] {
   font-weight: bold;
 }
 
-.modal-footer input[type="button"], .modal-footer button {
-  margin: 0 4px;
-}
-
 .modal-body {}
 
 .vmiddle {
   vertical-align: middle;
-}
-
-.modal-body>.input-label>input[type='text']:focus {
-  outline: none !important;
-  border: 1px solid blue;
-  box-shadow: 0 0 10px #719ECE;
 }
 
 
@@ -720,43 +734,9 @@ img.imageicon {
 .counter {
   position: absolute;
   top: 0;
-  right: 0px;
+  right: 5px;
   border-radius: 50%;
   background-color: red;
-  width: 14px;
-  height: 14px;
-  font-size: 12px;
-  font-weight: bolder;
-  color: white;
-}
-
-.notification {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  font-weight: bolder;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.notification .notification-title {
-
-}
-
-.notification .notification-body {
-
-}
-
-.notification-success {
-
-}
-
-.notification-alert {
-
-}
-
-.notification-danger {
-
 }
 
 .top-bar {

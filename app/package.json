@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
-    "electrongui": "^0.1.4",
+    "electrongui": "^0.1.5",
     "imagejextension": "^0.0.2",
     "mapextension": "^0.0.7"
   }
