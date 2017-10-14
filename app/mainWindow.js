@@ -16,7 +16,18 @@
 'use strict'
 
 let t = new Date()
-
+const {
+  Menu,
+  MenuItem,
+  app
+} = require('electron').remote
+const isSecond = app.makeSingleInstance((argv, workingdir) => {
+  if (argv.includes('--clean')) gui.workspace.newChecking()
+  if (win) win.show()
+})
+if (isSecond) {
+  app.quit()
+}
 const isDev = require('electron-is-dev')
 const {
   Workspace,
@@ -25,11 +36,7 @@ const {
   Gui,
   util
 } = require(`electrongui`)
-const {
-  Menu,
-  MenuItem,
-  app
-} = require('electron').remote
+
 const {
   ipcRenderer
 } = require('electron')
@@ -40,11 +47,6 @@ const ImageJExtension = require('imagejextension')
 //const Shiny = require('rshinyextension')
 
 let gui = new Gui()
-
-ipcRenderer.on('clean', () => {
-  if (gui && gui.workspace) gui.workspace.newChecking()
-})
-
 let mainProc = require('electron').remote.require('process')
 let isCleanW = mainProc.argv.includes('--clean')
 
@@ -60,7 +62,7 @@ document.addEventListener('drop', function(event) {
 }, false)
 gui.startWaiting()
 gui.win.setMaximizable(false) //work just in win and mac
-if (isDev || true) {
+if (isDev) {
   gui.addMenuItem(new MenuItem({
     label: "Dev",
     type: 'submenu',
