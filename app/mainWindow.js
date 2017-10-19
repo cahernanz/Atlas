@@ -60,7 +60,6 @@ document.addEventListener('drop', function(event) {
   event.preventDefault()
   return false
 }, false)
-gui.startWaiting()
 gui.win.setMaximizable(false) //work just in win and mac
 if (isDev) {
   gui.addMenuItem(new MenuItem({
@@ -68,7 +67,9 @@ if (isDev) {
     type: 'submenu',
     submenu: Menu.buildFromTemplate([{
       label: 'toggledevtools',
-      role: "toggledevtools"
+      click (item, focusedWindow) {
+          if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+        }
     }])
   }))
 }
@@ -118,16 +119,13 @@ gui.extensionsManager = new ExtensionsManager(gui)
 gui.workspace = new Workspace(gui, {
   clean: isCleanW
 })
-//gui.helpExtension = new HelpExtension()
 gui.tasksViewer = new TasksViewer(gui)
 new MapExtension(gui)
-//gui.helpExtension.activate()
 gui.tasksViewer.activate()
 gui.extensions.MapExtension.activate()
 gui.extensions.MapExtension.show()
 new ImageJExtension(gui)
 gui.extensions.ImageJExtension.activate()
-gui.stopWaiting()
 gui.viewTrick()
-gui.notify(`App loaded in ${(new Date())-t} ms`)
+gui.alerts.add(`App loaded in ${(new Date())-t} ms`,'default')
 module.exports = gui
