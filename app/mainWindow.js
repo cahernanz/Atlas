@@ -30,8 +30,6 @@ if (isSecond) {
 }
 const isDev = require('electron-is-dev')
 const {
-  Workspace,
-  ExtensionsManager,
   TasksViewer,
   Gui,
   util
@@ -40,15 +38,17 @@ const {
 const {
   ipcRenderer
 } = require('electron')
-//const HelpExtension = require('helpextension')
 const MapExtension = require('mapextension')
 const ImageJExtension = require('imagejextension')
-//const GM = require('graphicsmagickextension')
-//const Shiny = require('rshinyextension')
 
-let gui = new Gui()
 let mainProc = require('electron').remote.require('process')
 let isCleanW = mainProc.argv.includes('--clean')
+
+let gui = new Gui({
+  workspace: {
+    clean: isCleanW
+  }
+})
 
 //prevent app closing
 document.addEventListener('dragover', function(event) {
@@ -67,9 +67,9 @@ if (isDev) {
     type: 'submenu',
     submenu: Menu.buildFromTemplate([{
       label: 'toggledevtools',
-      click (item, focusedWindow) {
-          if (focusedWindow) focusedWindow.webContents.toggleDevTools()
-        }
+      click(item, focusedWindow) {
+        if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+      }
     }])
   }))
 }
@@ -79,33 +79,25 @@ gui.addMenuItem(new MenuItem({
   submenu: Menu.buildFromTemplate([{
       label: 'New Workspace',
       click: () => {
-        if (gui.workspace instanceof Workspace) {
-          gui.workspace.newChecking()
-        }
+        gui.workspace.newChecking()
       }
     },
     {
       label: 'Open Workspace',
       click: () => {
-        if (gui.workspace instanceof Workspace) {
-          gui.workspace.loadChecking()
-        }
+        gui.workspace.loadChecking()
       }
     },
     {
       label: 'Save Workspace',
       click: () => {
-        if (gui.workspace instanceof Workspace) {
-          gui.workspace.save(gui.workspace.spaces.workspace.path)
-        }
+        gui.workspace.save(gui.workspace.spaces.workspace.path)
       }
     },
     {
       label: 'Save Workspace as',
       click: () => {
-        if (gui.workspace instanceof Workspace) {
-          gui.workspace.save()
-        }
+        gui.workspace.save()
       }
     },
     {
@@ -115,17 +107,36 @@ gui.addMenuItem(new MenuItem({
   ])
 }))
 
-gui.extensionsManager = new ExtensionsManager(gui)
-gui.workspace = new Workspace(gui, {
-  clean: isCleanW
+gui.header.actionsContainer.addButton({
+  id: 'save',
+  groupId: 'basetools',
+  icon: 'fa fa-save',
+  title: 'Save current workspace',
+  action: () => {
+    gui.workspace.save()
+  }
 })
-gui.tasksViewer = new TasksViewer(gui)
-new MapExtension(gui)
-gui.tasksViewer.activate()
-gui.extensions.MapExtension.activate()
-gui.extensions.MapExtension.show()
-new ImageJExtension(gui)
-gui.extensions.ImageJExtension.activate()
+
+gui.header.actionsContainer.addButton({
+  id: 'load',
+  groupId: 'basetools',
+  icon: 'fa fa-folder-open-o',
+  title: 'Load a workspace',
+  action: () => {
+    gui.workspace.loadChecking()
+  }
+})
+
+gui.extensions.activate()
+let tasksViewer = new TasksViewer(gui)
+let mapext = new MapExtension(gui)
+tasksViewer.activate()
+mapext.activate()
+mapext.show()
+let imgj = new ImageJExtension(gui)
+imgj.activate()
 gui.viewTrick()
-gui.alerts.add(`App loaded in ${(new Date())-t} ms`,'default')
+let stat = 'default'
+if (isDev) stat = 'warning'
+gui.alerts.add(`App loaded in ${(new Date())-t} ms`, stat)
 module.exports = gui
