@@ -40,6 +40,7 @@ const {
 } = require('electron')
 const MapExtension = require('mapextension')
 const ImageJExtension = require('imagejextension')
+const GmExtension = require('graphicsmagickextension')
 
 let mainProc = require('electron').remote.require('process')
 let isCleanW = mainProc.argv.includes('--clean')
@@ -117,6 +118,7 @@ gui.header.actionsContainer.addButton({
   }
 })
 
+
 gui.header.actionsContainer.addButton({
   id: 'load',
   groupId: 'basetools',
@@ -127,6 +129,13 @@ gui.header.actionsContainer.addButton({
   }
 })
 
+gui.workspace.on('load',(e)=>{
+  gui.win.setTitle(`${gui.workspace.spaces.workspace.path}--${app.getName()}-v${app.getVersion()}`)
+})
+gui.workspace.on('save',(e)=>{
+  gui.win.setTitle(`${gui.workspace.spaces.workspace.path}--${app.getName()}-v${app.getVersion()}`)
+})
+
 gui.extensions.activate()
 let tasksViewer = new TasksViewer(gui)
 let mapext = new MapExtension(gui)
@@ -135,6 +144,8 @@ mapext.activate()
 mapext.show()
 let imgj = new ImageJExtension(gui)
 imgj.activate()
+
+gui.extensions.load('graphicsmagickextension')
 gui.viewTrick()
 let stat = 'default'
 if (isDev) stat = 'warning'

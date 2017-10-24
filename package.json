@@ -4,7 +4,7 @@
     "electron": "1.4.7"
   },
   "scripts": {
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "start": "electron ./app --enable-logging",
     "startclean": "electron ./app --enable-logging --clean",
     "dev": "NODE_ENV='development' npm run start",
@@ -57,5 +57,8 @@
       "perMachine": false,
       "runAfterFinish": true
     }
+  },
+  "dependencies": {
+    "sharp": "^0.18.4"
   }
 }
