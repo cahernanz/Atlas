@@ -10,6 +10,7 @@
   },
   "main": "main.js",
   "scripts": {
+    "startclean": "electron . --clean --enable-logging",
     "start": "electron . --enable-logging",
     "reinstall": "npm install -f electrongui mapextension helpextension",
     "pack:osx": "electron-packager .   --overwrite --version=1.4.5 --platform=darwin --arch=x64 --icon=images/appicons/icon.icns",
@@ -27,17 +28,14 @@
     "neuroscience",
     "spatial data"
   ],
-  "license": "GPL-3",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.10"
+    "electron": "1.4.7"
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
-    "electrongui": "",
-    "graphicsmagickextension": "github:gherardovarando/GraphicsMagickExtension",
-    "helpextension": "github:gherardovarando/HelpExtension",
-    "imagejextension": "github:gherardovarando/ImageJExtension",
-    "mapextension": "",
-    "rshinyextension": "github:gherardovarando/RShinyExtension"
+    "electrongui": "^0.4.2",
+    "imagejextension": "^0.1.0",
+    "mapextension": "^0.1.15"
   }
 }
