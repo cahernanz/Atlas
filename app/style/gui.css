@@ -809,6 +809,11 @@ div.gui-alert {
   animation-duration: 0.7s;
   padding: 3px;
   display: table-row;
+  opacity: 0.8;
+}
+
+div.gui-alert:hover{
+  opacity: 1;
 }
 
 div.gui-alert-icon {
@@ -834,7 +839,7 @@ div.gui-alert-icon {
 }
 
 .gui-alert-success .gui-alert-icon {
-  background-color: rgba(33, 125, 206, 0.9);
+  background-color: rgba(33, 125, 206, 1);
 }
 
 div.gui-alert-warning {

@@ -129,11 +129,15 @@ gui.header.actionsContainer.addButton({
   }
 })
 
-gui.workspace.on('load',(e)=>{
+gui.workspace.on('load', (e) => {
   gui.win.setTitle(`${gui.workspace.spaces.workspace.path}--${app.getName()}-v${app.getVersion()}`)
 })
-gui.workspace.on('save',(e)=>{
+gui.workspace.on('save', (e) => {
   gui.win.setTitle(`${gui.workspace.spaces.workspace.path}--${app.getName()}-v${app.getVersion()}`)
+})
+
+gui.workspace.on('error', (e) => {
+  gui.alerts.add(e.message, 'warning')
 })
 
 gui.extensions.activate()
